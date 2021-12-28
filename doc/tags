@@ -1,0 +1,12 @@
+<Plug>SlimeCellsNext	vim-slime-cells.txt	/*<Plug>SlimeCellsNext*
+<Plug>SlimeCellsPrev	vim-slime-cells.txt	/*<Plug>SlimeCellsPrev*
+<Plug>SlimeCellsSendAndGoToNext	vim-slime-cells.txt	/*<Plug>SlimeCellsSendAndGoToNext*
+SlimeCellsNext	vim-slime-cells.txt	/*SlimeCellsNext*
+SlimeCellsPrev	vim-slime-cells.txt	/*SlimeCellsPrev*
+SlimeCellsSendAndGoToNext	vim-slime-cells.txt	/*SlimeCellsSendAndGoToNext*
+slime-cells	vim-slime-cells.txt	/*slime-cells*
+slime-cells-author	vim-slime-cells.txt	/*slime-cells-author*
+slime-cells-configuration	vim-slime-cells.txt	/*slime-cells-configuration*
+slime-cells-contents	vim-slime-cells.txt	/*slime-cells-contents*
+slime-cells-usage	vim-slime-cells.txt	/*slime-cells-usage*
+slime-cells.txt	vim-slime-cells.txt	/*slime-cells.txt*

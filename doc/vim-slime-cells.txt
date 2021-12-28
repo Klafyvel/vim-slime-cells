@@ -1,0 +1,71 @@
+*slime-cells.txt* A cell management wrapper around vim-slime.
+
+Author: Hugo Levy-Falk                          *slime-cells-author*
+License: MIT
+
+==============================================================================
+                                                *slime-cells*
+A cell management wrapper around vim-slime. Currently it allows users to
+navigate between cells and provides a mapping to send current and go to next
+cell.
+                                                        
+CONTENTS                                        *slime-cells-contents*
+
+    1. Usage ................ |slime-cells-usage|
+    2. Configuration ........ |slime-cells-configuration|
+    3. Requirements ......... |slime-cells-requirements|
+
+==============================================================================
+1. Usage                                        *slime-cells-usage*
+
+Without any configuration, the plugin does not map anything. However, the
+author of the plugin likes to change a bit the configuration of |slime|
+like this :
+>
+    " vim-slime configuration
+    let g:slime_cell_delimiter = "^\\s*##"
+    let g:slime_no_mappings = 1
+    nmap <c-c>v <Plug>SlimeConfig
+<
+This configuration will tell |slime| that any line that starts with zero
+or more spaces folowed by '##' marks the limit between two cells. Then we
+deactivate slime's default mappings and map the configuration command.
+We can then proceed to configure |slime-cells|. The commands names are pretty
+self-explanatory. Check |slime-cells-configuration| for more details.
+>
+    " vim-slime-cells configuration
+    nmap <c-c><c-c> <Plug>SlimeCellsSendAndGoToNext
+    nmap <c-c>n <Plug>SlimeCellsNext
+    nmap <c-c>p <Plug>SlimeCellsPrev
+<
+
+==============================================================================
+2. Configuration                                *slime-cells-configuration*
+
+Global variables~
+
+The plugin uses slime's global variable |g:slime_cell_delimiter| to detect the
+limit between cells.
+
+Mappings~
+
+As discussed above, slime-cells provides three commands
+
+                                                *<Plug>SlimeCellsSendAndGoToNext*
+                                                *SlimeCellsSendAndGoToNext*
+<Plug>SlimeCellsSendAndGoToNext     Send current cell using slime's
+                                    <Plug>SendCell then triggers
+                                    |<Plug>SlimeCellsNext|.
+
+                                                *<Plug>SlimeCellsNext*
+                                                *SlimeCellsNext*
+<Plug>SlimeCellsNext                Move cursor to next cell.
+
+                                                *<Plug>SlimeCellsPrev*
+                                                *SlimeCellsPrev*
+<Plug>SlimeCellsPrev                Move cursor to previous cell.
+
+==============================================================================
+3. Requirements
+
+Slime-cells needs vim-slime (https://github.com/jpalardy/vim-slime).

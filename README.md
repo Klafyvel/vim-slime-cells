@@ -42,7 +42,7 @@ See `:help slime-cells`.
 
 ## Credits
 
-The original idea that makes the syntax-highlighting feature work is from @bensmrs, and the macro he came up with deserves a place here for posterity.
+The original idea that makes the syntax-highlighting feature work is from [@bensmrs](https://github.com/bensmrs), and the macro he came up with deserves a place here for posterity.
 
 ```vim
 hi Match ctermbg=162

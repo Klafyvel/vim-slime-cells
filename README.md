@@ -3,7 +3,13 @@ A plugin on top of [vim-slime](https://github.com/jpalardy/vim-slime) to enhance
 
 There is also a nice syntax-highlighting feature for cell boundaries.
 
+## Preview
+
+[![asciicast](https://asciinema.org/a/459030.svg)](https://asciinema.org/a/459030)
+
 ## Installation
+
+You need [vim-slime](https://github.com/jpalardy/vim-slime) installed.
 
 You can use Vim-Plug:
 ```vim
@@ -12,21 +18,22 @@ Plug 'klafyvel/vim-slime-cells'
 
 ## Configuration
 
-Here is an example of how you can configure vim-slime and vim-slime-cells to work together.
+Here is an example of how you can configure vim-slime and vim-slime-cells to work together. Those are settings used in the preview.
 
 ```vim
 " vim-slime
 let g:slime_target = "tmux"
 let g:slime_cell_delimiter = "^\\s*##"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.1"}
+let g:slime_dont_ask_default = 1
 let g:slime_bracketed_paste = 1
 let g:slime_no_mappings = 1
 nmap <c-c>v <Plug>SlimeConfig
 
 " vim-slime-cells
 nmap <c-c><c-c> <Plug>SlimeCellsSendAndGoToNext
-nmap <c-c>n <Plug>SlimeCellsNext
-nmap <c-c>p <Plug>SlimeCellsPrev
+nmap <c-c><c-Down> <Plug>SlimeCellsNext
+nmap <c-c><c-Up> <Plug>SlimeCellsPrev
 ```
 
 ## Documentation

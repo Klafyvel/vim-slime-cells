@@ -36,8 +36,8 @@ self-explanatory. Check |slime-cells-configuration| for more details.
 >
     " vim-slime-cells configuration
     nmap <c-c><c-c> <Plug>SlimeCellsSendAndGoToNext
-    nmap <c-c>n <Plug>SlimeCellsNext
-    nmap <c-c>p <Plug>SlimeCellsPrev
+    nmap <c-c><c-Down> <Plug>SlimeCellsNext
+    nmap <c-c><c-Up> <Plug>SlimeCellsPrev
 <
 
 ==============================================================================

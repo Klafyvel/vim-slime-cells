@@ -10,6 +10,26 @@ function! slime_cells#get_delimiter()
     return cell_delimiter
 endfunction
 
+" This function is directly adapted from vim-slime. (https://github.com/jpalardy/vim-slime)
+function! slime_cells#send_cell() abort
+  let cell_delimiter = slime_cells#get_delimiter()
+  if cell_delimiter == ""
+      return
+  endif
+
+  let line_ini = search(cell_delimiter, 'bcnW')
+  let line_end = search(cell_delimiter, 'nW')
+
+  " line after delimiter or top of file
+  let line_ini = line_ini ? line_ini + 1 : 1
+  " line before delimiter or bottom of file
+  let line_end = line_end ? line_end - 1 : line("$")
+
+  if line_ini <= line_end
+    call slime#send_range(line_ini, line_end)
+  endif
+endfunction
+
 function! slime_cells#go_to_next_cell()
   let cell_delimiter = slime_cells#get_delimiter()
   if cell_delimiter == ""

@@ -51,10 +51,15 @@ Mappings~
 
 As discussed above, slime-cells provides three commands
 
+                                                *<Plug>SlimeCellsSend*
+                                                *SlimeCellsSend*
+<Plug>SlimeCellsSend                Send current cell. Cells are delimited by
+                                    |g:slime_cell_delimiter|.
+
                                                 *<Plug>SlimeCellsSendAndGoToNext*
                                                 *SlimeCellsSendAndGoToNext*
-<Plug>SlimeCellsSendAndGoToNext     Send current cell using slime's
-                                    <Plug>SendCell then triggers
+<Plug>SlimeCellsSendAndGoToNext     Send current cell using
+                                    |<Plug>SlimeCellsSend| then triggers
                                     |<Plug>SlimeCellsNext|.
 
                                                 *<Plug>SlimeCellsNext*

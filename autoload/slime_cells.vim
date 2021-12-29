@@ -49,3 +49,15 @@ function! slime_cells#go_to_previous_cell()
   let line = line ? line : 1
   call cursor(line, 0)
 endfunction
+
+function! slime_cells#sign_on_cell_boundaries()
+  if expand("%:p") != ""
+    let cell_delimiter = slime_cells#get_delimiter()
+    if cell_delimiter == ""
+        return
+    endif
+    call sign_unplace("slime-cells")
+    call map(getline(1, '$'), {idx, val ->val =~ cell_delimiter ? sign_place(0, "slime-cells", "SlimeCell", expand("%:p"), {"lnum": idx+1}) : 1})
+  endif
+endfunction
+

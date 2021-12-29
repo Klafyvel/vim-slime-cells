@@ -12,8 +12,9 @@ cell.
 CONTENTS                                        *slime-cells-contents*
 
     1. Usage ................ |slime-cells-usage|
-    2. Configuration ........ |slime-cells-configuration|
-    3. Requirements ......... |slime-cells-requirements|
+    2. Highlighting ......... |slime-cells-highlight|
+    3. Configuration ........ |slime-cells-configuration|
+    4. Requirements ......... |slime-cells-requirements|
 
 ==============================================================================
 1. Usage                                        *slime-cells-usage*
@@ -40,16 +41,57 @@ self-explanatory. Check |slime-cells-configuration| for more details.
 <
 
 ==============================================================================
-2. Configuration                                *slime-cells-configuration*
+2. Highlighting                                 *slime-cells-highlight*
+
+By default, slime-cells highlights whole line delimiting cells using a
+highlight group derived from "SpecialComment". It also underlines the whole
+line to mark the separation. This behaviour can be tweaked in two ways.
+
+Changing the parent highlight group~
+
+This is done by setting |g:slime_cells_highlight_from|, e.g.
+>
+   let g:slime_cells_highlight_from = "Comment"
+<
+
+Changing completely the default behaviour~
+
+The highlight of cell boundaries is performed using the |sig| command. If you
+set |g:slime_cells_no_highlight| to something different from 0, e.g.
+>
+   let g:slime_cells_no_highlight = 1
+<
+Then, the default highlightinf behaviour is disabled. You can then set-up a
+completely new one, e.g.
+>
+    hi! link CellBoundary Comment
+    autocmd TextChanged,TextChangedI,TextChangedP,BufWinEnter,BufWritePost,FileWritePost * :call slime_cells#sign_on_cell_boundaries()
+<
+
+The second line calls a function to detect the cell separation lines and place
+the correct sign on them each time the text in buffer is updated.
+
+==============================================================================
+3. Configuration                                *slime-cells-configuration*
 
 Global variables~
 
-The plugin uses slime's global variable |g:slime_cell_delimiter| to detect the
-limit between cells.
+                                                *g:slime_cell_delimiter*
+g:slime_cell_delimiter              A regex to delimit cells. The name is
+                                    "cell" and not "cells" to keep
+                                    compatibility with vim-slime.
+
+                                                *g:slime_cells_highlight_from*
+g:slime_cells_highlight_from        Highlight group from which cells
+                                    boundaries highlights are copied. Default
+                                    is "SpecialComment".
+
+                                                *g:slime_cells_no_highlight*
+g:slime_cells_no_highlight          If set different to 0, the default 
+                                    highlight mechanism is disabled. Default
+                                    is 1.
 
 Mappings~
-
-As discussed above, slime-cells provides three commands
 
                                                 *<Plug>SlimeCellsSend*
                                                 *SlimeCellsSend*
@@ -71,6 +113,6 @@ As discussed above, slime-cells provides three commands
 <Plug>SlimeCellsPrev                Move cursor to previous cell.
 
 ==============================================================================
-3. Requirements
+4. Requirements
 
 Slime-cells needs vim-slime (https://github.com/jpalardy/vim-slime).

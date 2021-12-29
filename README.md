@@ -18,7 +18,7 @@ Plug 'klafyvel/vim-slime-cells'
 
 ## Configuration
 
-Here is an example of how you can configure vim-slime and vim-slime-cells to work together. Those are settings used in the preview.
+Here is an example of how you can configure vim-slime and vim-slime-cells to work together. Those settings are used in the preview.
 
 ```vim
 " vim-slime
@@ -42,7 +42,9 @@ See `:help slime-cells`.
 
 ## Credits
 
-The original idea that makes the syntax-highlighting feature work is from [@bensmrs](https://github.com/bensmrs), and the macro he came up with deserves a place here for posterity.
+[vim-slime](https://github.com/jpalardy/vim-slime) is a very nice plugin developped by [Jonathan Palardy](https://github.com/jpalardy).
+
+The original idea that makes the syntax-highlighting feature in vim-slime-cells work is from [@bensmrs](https://github.com/bensmrs), and the macro he came up with deserves a place here for posterity.
 
 ```vim
 hi Match ctermbg=162

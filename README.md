@@ -1,6 +1,8 @@
 # vim-slime-cells
 A plugin on top of [vim-slime](https://github.com/jpalardy/vim-slime) to enhance its cell feature. It adds the possibility to jump between cells and to send the current cell then jump to the next one.
 
+There is also a nice syntax-highlighting feature for cell boundaries.
+
 ## Installation
 
 You can use Vim-Plug:
@@ -30,3 +32,13 @@ nmap <c-c>p <Plug>SlimeCellsPrev
 ## Documentation
 
 See `:help slime-cells`.
+
+## Credits
+
+The original idea that makes the syntax-highlighting feature work is from @bensmrs, and the macro he came up with deserves a place here for posterity.
+
+```vim
+hi Match ctermbg=162
+sig define highlightline linehl=Match
+au TextChanged,TextChangedI,TextChangedP,BufWinEnter,BufWritePost,FileWritePost * if expand("%:p") != "" | exe("call map(range(1,1000), {i->execute('sig unplace 999 file='.expand('%:p'))})") | call map(getline(1, '$'), {idx, val -> execute('if val =~ "^\\s*##" | exe "sig place 999 line=".expand(idx+1)." name=highlightline file=".expand("%:p") | endif')}) | endif
+```

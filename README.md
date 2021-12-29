@@ -5,7 +5,7 @@ There is also a nice syntax-highlighting feature for cell boundaries.
 
 ## Preview
 
-[![asciicast](https://asciinema.org/a/459030.svg)](https://asciinema.org/a/459030)
+[![asciicast](https://asciinema.org/a/459056.svg)](https://asciinema.org/a/459056)
 
 ## Installation
 

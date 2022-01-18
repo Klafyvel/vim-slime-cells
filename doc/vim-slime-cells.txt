@@ -19,9 +19,14 @@ CONTENTS                                        *slime-cells-contents*
 ==============================================================================
 1. Usage                                        *slime-cells-usage*
 
-Without any configuration, the plugin does not map anything. However, the
-author of the plugin likes to change a bit the configuration of |slime|
-like this :
+Without any configuration, the plugin only maps two text objects commands,
+that also work in visual mode :
+
+* |ic| will select the content of the current cell, without the header,
+* |ac| will select the content of the current cell, including the header.
+
+To exploit the full capabilities of the plugin, the author likes to change a
+bit the configuration of |slime| like this :
 >
     " vim-slime configuration
     let g:slime_cell_delimiter = "^\\s*##"

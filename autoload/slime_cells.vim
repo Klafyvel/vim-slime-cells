@@ -46,7 +46,7 @@ function! slime_cells#go_to_next_cell()
       return
   endif
   let line = search(cell_delimiter, 'eW')
-  let line = line ? line : line("$")
+  let line = line ? line+1 : line("$")
   call cursor(line, 0)
 endfunction
 
@@ -56,7 +56,7 @@ function! slime_cells#go_to_previous_cell()
       return
   endif
   let line = search(cell_delimiter, 'Wbz')
-  let line = line ? line : 1
+  let line = line ? line-1 : 1
   call cursor(line, 0)
 endfunction
 

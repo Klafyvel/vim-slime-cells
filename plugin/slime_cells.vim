@@ -27,5 +27,5 @@ if !exists("g:slime_cells_no_highlight") || !g:slime_cells_no_highlight
         \" guibg=" . synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "gui") .
         \" ctermbg=" . synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "cterm")
         
-    autocmd TextChanged,TextChangedI,TextChangedP,BufWinEnter,BufWritePost,FileWritePost * :call slime_cells#sign_on_cell_boundaries()
+    autocmd TextChanged,TextChangedI,TextChangedP,BufWinEnter,BufWritePost,FileWritePost,BufEnter * :call slime_cells#sign_on_cell_boundaries()
 endif

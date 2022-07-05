@@ -91,6 +91,22 @@ g:slime_cells_highlight_from        Highlight group from which cells
                                     boundaries highlights are copied. Default
                                     is "SpecialComment".
 
+                                                *g:slime_cells_fg_gui*
+g:slime_cells_fg_gui                Overwrite |guifg| parameter for the hilight
+                                    command.
+                                    
+                                                *g:slime_cells_bg_gui*
+g:slime_cells_bg_gui                Overwrite |guibg| parameter for the hilight
+                                    command.
+                                    
+                                                *g:slime_cells_fg_cterm*
+g:slime_cells_fg_cterm              Overwrite |ctermfg| parameter for the 
+                                    hilight command.
+                                    
+                                                *g:slime_cells_bg_cterm*
+g:slime_cells_bg_cterm              Overwrite |ctermbg| parameter for the 
+                                    hilight command.
+                                    
                                                 *g:slime_cells_no_highlight*
 g:slime_cells_no_highlight          If set different to 0, the default 
                                     highlight mechanism is disabled. Default

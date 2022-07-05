@@ -20,12 +20,39 @@ endif
 sig define SlimeCell linehl=CellBoundary
 
 if !exists("g:slime_cells_no_highlight") || !g:slime_cells_no_highlight
-    " Steal the style of g:slime_cells_highlight_from
+    let fg_gui = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "gui")
+    if exists("g:slime_cells_fg_gui")
+      let fg_gui=g:slime_cells_fg_gui
+    elseif len(fg_gui) == 0
+      let fg_gui = "White"
+    endif
+
+    let fg_cterm = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "cterm")
+    if exists("g:slime_cells_fg_cterm")
+      let fg_cterm=g:slime_cells_fg_cterm
+    elseif len(fg_cterm) == 0
+      let fg_cterm = "White"
+    endif
+
+    let bg_gui = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "gui")
+    if exists("g:slime_cells_bg_gui")
+      let bg_gui=g:slime_cells_bg_gui
+    elseif len(bg_gui) == 0
+      let bg_gui = ""
+    endif
+
+    let bg_cterm = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "cterm")
+    if exists("g:slime_cells_bg_cterm")
+      let bg_cterm=g:slime_cells_bg_cterm
+    elseif len(bg_cterm) == 0
+      let bg_cterm = ""
+    endif
+
     exe "hi! CellBoundary gui=underline cterm=underline" . 
-        \" guifg=" . synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "gui") .
-        \" ctermfg=" . synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "cterm") .
-        \" guibg=" . synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "gui") .
-        \" ctermbg=" . synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "cterm")
+        \" guifg=" . fg_gui .
+        \" ctermfg=" . fg_cterm .
+        \" guibg=" . bg_gui .
+        \" ctermbg=" . bg_cterm
         
     autocmd TextChanged,TextChangedI,TextChangedP,BufWinEnter,BufWritePost,FileWritePost,BufEnter * :call slime_cells#sign_on_cell_boundaries()
 endif

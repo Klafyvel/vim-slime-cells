@@ -37,7 +37,7 @@ endfunction
 function! slime_cells#send_cell() abort
   call slime#store_curpos()
   call slime_cells#select_current_cell()
-  call slime#send_op(visualmode(), 1)
+  call slime#send_op("", 1)
 endfunction
 
 function! slime_cells#go_to_next_cell()

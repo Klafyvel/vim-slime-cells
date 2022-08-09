@@ -6,7 +6,7 @@ let g:loaded_slime_cells = 1
 noremap <unique> <script> <silent> <Plug>SlimeCellsSend :<c-u>call slime_cells#send_cell()<cr>
 noremap <unique> <script> <silent> <Plug>SlimeCellsNext :<c-u>call slime_cells#go_to_next_cell()<cr>
 noremap <unique> <script> <silent> <Plug>SlimeCellsPrev :<c-u>call slime_cells#go_to_previous_cell()<cr>
-noremap <unique> <script> <silent> <Plug>SlimeCellsSendAndGoToNext :<c-u>call slime#send_cell()<cr>:call slime_cells#go_to_next_cell()<cr>
+noremap <unique> <script> <silent> <Plug>SlimeCellsSendAndGoToNext :<c-u>call slime_cells#send_cell()<cr>:call slime_cells#go_to_next_cell()<cr>
 
 onoremap <silent> ic :<c-u>call slime_cells#select_current_cell(0)<cr>
 onoremap <silent> ac :<c-u>call slime_cells#select_current_cell(1)<cr>

@@ -60,6 +60,11 @@ function! slime_cells#go_to_previous_cell()
   call cursor(line, 0)
 endfunction
 
+function! slime_cells#send_cell_and_go_to_next()
+  call slime_cells#send_cell()
+  call slime_cells#go_to_next_cell()
+endfunction
+
 function! slime_cells#sign_on_cell_boundaries()
   if expand("%:p") != ""
     let cell_delimiter = slime_cells#get_delimiter()

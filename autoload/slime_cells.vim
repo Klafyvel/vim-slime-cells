@@ -32,6 +32,10 @@ function! slime_cells#select_current_cell(include_header=0) abort
   call setpos("'<", [0, line_ini, col_ini, 0])
   call setpos("'>", [0, line_end, col_end, 0])
   normal! gv
+  let current_mode = mode()
+  if current_mode != "V"
+    normal! V
+  endif
 endfunction
 
 function! slime_cells#send_cell() abort

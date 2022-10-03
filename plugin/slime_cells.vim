@@ -38,14 +38,14 @@ if !exists("g:slime_cells_no_highlight") || !g:slime_cells_no_highlight
     if exists("g:slime_cells_bg_gui")
       let bg_gui=g:slime_cells_bg_gui
     elseif len(bg_gui) == 0
-      let bg_gui = ""
+      let bg_gui = 0
     endif
 
     let bg_cterm = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "cterm")
     if exists("g:slime_cells_bg_cterm")
       let bg_cterm=g:slime_cells_bg_cterm
     elseif len(bg_cterm) == 0
-      let bg_cterm = ""
+      let bg_cterm = 0
     endif
 
     exe "hi! CellBoundary gui=underline cterm=underline" . 

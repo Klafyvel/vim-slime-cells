@@ -20,39 +20,46 @@ endif
 sig define SlimeCell linehl=CellBoundary
 
 if !exists("g:slime_cells_no_highlight") || !g:slime_cells_no_highlight
-    let fg_gui = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "gui")
+    let parameters = ""
+
     if exists("g:slime_cells_fg_gui")
       let fg_gui=g:slime_cells_fg_gui
-    elseif len(fg_gui) == 0
-      let fg_gui = "White"
+    else
+      let fg_gui = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "gui")
+    endif
+    if len(fg_gui) > 0
+      let parameters = parameters . " guifg=" . fg_gui
     endif
 
-    let fg_cterm = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "cterm")
+
     if exists("g:slime_cells_fg_cterm")
       let fg_cterm=g:slime_cells_fg_cterm
-    elseif len(fg_cterm) == 0
-      let fg_cterm = "White"
+    else
+      let fg_cterm = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "fg", "cterm")
+    endif
+    if len(fg_cterm) > 0
+      let parameters = parameters . " ctermfg=" . fg_cterm
     endif
 
-    let bg_gui = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "gui")
     if exists("g:slime_cells_bg_gui")
       let bg_gui=g:slime_cells_bg_gui
-    elseif len(bg_gui) == 0
-      let bg_gui = ""
+    else
+      let bg_gui = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "gui")
+    endif
+    if len(bg_gui) > 0
+      let parameters = parameters . " guibg=" . bg_gui
     endif
 
-    let bg_cterm = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "cterm")
     if exists("g:slime_cells_bg_cterm")
       let bg_cterm=g:slime_cells_bg_cterm
-    elseif len(bg_cterm) == 0
-      let bg_cterm = ""
+    else
+      let bg_cterm = synIDattr(synIDtrans(hlID(g:slime_cells_highlight_from)), "bg", "cterm")
+    endif
+    if len(bg_cterm) > 0
+      let parameters = parameters . " ctermbg=" . bg_cterm
     endif
 
-    exe "hi! CellBoundary gui=underline cterm=underline" . 
-        \" guifg=" . fg_gui .
-        \" ctermfg=" . fg_cterm .
-        \" guibg=" . bg_gui .
-        \" ctermbg=" . bg_cterm
+    exe "hi! CellBoundary gui=underline cterm=underline" . parameters 
         
     autocmd TextChanged,TextChangedI,TextChangedP,BufWinEnter,BufWritePost,FileWritePost,BufEnter * :call slime_cells#sign_on_cell_boundaries()
 endif
